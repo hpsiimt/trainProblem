@@ -37,7 +37,7 @@
                 </tr>
                 </thead>
                 <tbody *ngIf="seatAvailibilty?.length != 0">
-                <tr *ngFor="let seat of seatAvailibilty;let i = index;">
+                <tr *ngFor="let seat of seatAvailibilty;let i = index;" [style.background-color]="seat.status == 'Reserved'?'#20c4209c':'white'">
                     <td>{{ i + 1 }}</td>
                     <td>1</td>
                     <td>1</td>
