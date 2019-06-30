@@ -22,7 +22,7 @@ export class ReservationComponent implements OnInit {
       Validators.maxLength(2),Validators.min(1), Validators.max(7)])
   });
   ngOnInit() {
-    this.http.post(`http://localhost/tasks/trainProblem/api.php`,{})
+    this.http.post(`https://techscript24.com/hari_testing/api.php`,{})
       .pipe(map(res => res))
       .subscribe(res=>{
         if(res['status'] == 1){
@@ -44,7 +44,7 @@ export class ReservationComponent implements OnInit {
     let body = new HttpParams();
     body = body.set("data",JSON.stringify(this.reservationForm.value));
     body = body.set("mode","reserve");
-    this.http.post(`http://localhost/tasks/trainProblem/api.php`,body, this.headers)
+    this.http.post(`https://techscript24.com/hari_testing/api.php`,body, this.headers)
       .pipe(map(res => res))
       .subscribe(res=>{
         if(res['status'] != 1){
