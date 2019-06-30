@@ -25,11 +25,11 @@ export class ReservationComponent implements OnInit {
     this.http.post(`http://localhost/tasks/trainProblem/api.php`,{})
       .pipe(map(res => res))
       .subscribe(res=>{
-        if(res.status == 1){
-          this.seatAvailibilty = res.data;
+        if(res['status'] == 1){
+          this.seatAvailibilty = res['data'];
           console.log(this.seatAvailibilty);
         }else{
-          alert(res.msg);
+          alert(res['msg']);
         }
       });
   }
@@ -47,14 +47,14 @@ export class ReservationComponent implements OnInit {
     this.http.post(`http://localhost/tasks/trainProblem/api.php`,body, this.headers)
       .pipe(map(res => res))
       .subscribe(res=>{
-        if(res.status != 1){
-          alert(res.msg);
+        if(res['status'] != 1){
+          alert(res['msg']);
         }else{
-          if(res.available == 0){
+          if(res['available'] == 0){
             alert("Required seat is not available");
-          }else if(res.booked == 1){
+          }else if(res['booked'] == 1){
             alert("Seat have been booked");
-            this.seatAvailibilty = res.data;
+            this.seatAvailibilty = res['data'];
           }
         }
       });
