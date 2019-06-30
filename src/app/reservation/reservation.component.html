@@ -1,0 +1,56 @@
+<form [formGroup]="reservationForm" (ngSubmit)="searchSeat()">
+    <div class="row">
+        <div class="col-sm-2" style="display: none;">
+            <div class="form-group">
+                <label class="form-label">Subject</label>
+                <input type="text" name="user" id="user" formControlName="user"/>
+            </div>
+        </div>
+        <div class="col-sm-2" style="display:none;">
+            <div class="form-group">
+                <label class="form-label">Topic</label>
+                <input type="text" name="user" id="user" formControlName="train"/>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label class="form-label">Number of Seats Required</label>
+                <input type="text" name="user" id="user" formControlName="requiredSeats"/>
+            </div>
+        </div>
+        <div class="col-sm-2" style="display:flex;flex-direction:column-reverse">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Book Seats</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="tableHeading">
+                <tr>
+                    <th>S.No.</th>
+                    <th>Train number</th>
+                    <th>Coach number</th>
+                    <th>Seat number</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="seatAvailibilty?.length != 0">
+                <tr *ngFor="let seat of seatAvailibilty;let i = index;">
+                    <td>{{ i + 1 }}</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>{{ seat.seat_no }}</td>
+                    <td>{{ seat.status }}</td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="seatAvailibilty?.length == 0">
+                <tr>
+                    <td colspan="6" class="no-data-available"><h2>No data!</h2></td>
+                </tr>
+                <tbody>
+            </table>
+        </div>            
+    </div>
+</form>
